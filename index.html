@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>smartDiff</title>
 </head>
 <body>
@@ -11,27 +12,80 @@
     <h1>smartDiff</h1>
     <p>insert your code</p>
 </div>
-<div class="text-center align-content-center">
-    <div class="row">
-        <div class="col-6">
-            <p>this tamplate this tamplate</p>
+<div id="app" class="container text-center align-content-center">
+
+        <div class="row">
+            <div class="col-6 text-center">
+                <p>this tamplate this tamplate</p>
+            </div>
+            <div class="col-6 text-center">
+                <p>this tamplate this tamplatthis tamplate this tamplat</p>
+            </div>
+
 
         </div>
-        <div class="col-6">
-            <p>this tamplate this tamplatthis tamplate this tamplat</p>
+
+
+        <div class="row">
+
+            <div class="col-6 text-center">
+                <button type="button" class="btn btn-outline-primary float-right" >submitt</button>
+            </div>
+            <div class="col-6 text-center">
+                <button type="button" class="btn btn-outline-primary float-right">submitt</button>
+            </div>
 
         </div>
-    </div>
-    <div class="container row">
-        <div class="align-content-center col-6 text-right ">
-            <button type="button" class="btn btn-outline-primary">sumitt</button>
+        <hr>
+            <div class="col-12">
+                <button @click="hide_progres" type="button" class="btn btn-block btn-outline-primary ">submit work</button>
+            </div>
+<!-- загрузка прогресс бар старт  -->
+            <div v-if="prog_bar" class="position-absolute bg-dark" style="bottom:0%; right: 0%; left: 0%; top: 0%; height: 100%" >
+
+                    <div class="border border-primary position-absolute  bg-white" style="border-radius: 10px; bottom:50%; right: 20%; left: 20%">
+                        <div class="progress mt-5 mb-5 ml-4 mr-4 ">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%"></div>
+                        </div>
+
+                    </div>
+
+            </div>
+        <!-- загрузка прогресс бар конец  -->
+
+        <div class="row mt-4">
+            <div class="col-6">
+                <div class=" border border-primary">
+                    <p>place for youre code</p>
+                </div>
+            </div>
+            <div class="container col-6">
+                <div class=" border border-primary">
+                    <p>place for code original</p>
+                </div>
+            </div>
         </div>
-        <div class="align-content-center col-6 text-right ">
-            <button type="button" class="btn btn-outline-primary">sumitt</button>
-        </div>
-    </div>
-    <hr>
 
 </div>
 </body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            prog_bar:false
+        },
+        methods:{
+            visible_progres(){
+                this.prog_bar= !(this.prog_bar);
+
+            },
+            hide_progres(){
+                this.prog_bar= !(this.prog_bar);
+                setTimeout(this.visible_progres, 5000);
+            }
+
+        }
+    })
+</script>
 </html>
